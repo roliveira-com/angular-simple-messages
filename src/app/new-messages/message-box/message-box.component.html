@@ -1,0 +1,12 @@
+<header class="MessageBox">
+  <div class="MessageBox__fields">
+    <!-- No input logo abaixo, delegamos a mudança da propriedade text ao controlador do componente -->
+    <!-- <input [value]="text" (change)="changeText($event)" class="MessageBox__fields--text" type="text" id="message"> -->
+    
+    <!-- <input [value]="text" (input)="text=$event.target.value" class="MessageBox__fields--text" type="text" id="message"> -->
+    
+    <input [(ngModel)]="text" class="MessageBox__fields--text" type="text" id="message">
+    <button (click)="btnClicked()" class="MessageBox__fields--button" id="send">Send</button>
+  </div>
+  <a href="/old-messages" class="MessageBox--link">Old messages</a>
+</header>
