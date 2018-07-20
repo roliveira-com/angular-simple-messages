@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
-import { Message } from '../../core'
+import { Message, ImageMessage } from 'app/core'
 
 @Component({
   selector: 'app-message-area',
@@ -9,13 +9,17 @@ import { Message } from '../../core'
 })
 export class MessageAreaComponent implements OnInit {
 
-  public messages: Message[] = [];
+  @Input() public messages: Message[] = [];
 
   constructor() { 
-    this.messages.push(new Message('Mensagenzinhas'))
-   }
+  }
 
   ngOnInit() {
+    this.messages.push(new ImageMessage('text', undefined, '/assets/images/especializa_logo.jpg'))
+  }
+
+  isImageMessage(m: Message){
+    return  m instanceof ImageMessage
   }
 
 }

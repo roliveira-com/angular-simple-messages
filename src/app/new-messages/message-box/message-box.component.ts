@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Message } from 'app/core'
 
 @Component({
   selector: 'app-message-box',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class MessageBoxComponent implements OnInit {
 
   public text: string = 'Digite sua mensagem';
+  @Output() public onNewMessage = new EventEmitter<string>();
+
 
   constructor() { }
 
@@ -16,7 +19,8 @@ export class MessageBoxComponent implements OnInit {
 
   btnClicked(){
     console.log('btn');
-    console.log('Valor de text ', this.text);
+    console.log('Valor de text: ', this.text);
+    this.onNewMessage.emit(this.text);
   }
 
   changeText(evt: Event){
