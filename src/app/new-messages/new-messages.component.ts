@@ -8,7 +8,7 @@ import { Message } from 'app/core';
 })
 export class NewMessagesComponent implements OnInit {
 
-  public messages: Message[] = [];
+  public messages: Message[];
 
   constructor() { }
 

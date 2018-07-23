@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Message, ImageMessage } from 'app/core'
 
@@ -9,13 +9,22 @@ import { Message, ImageMessage } from 'app/core'
 })
 export class MessageAreaComponent implements OnInit {
 
-  @Input() public messages: Message[] = [];
+  @Output() messagesChange = new EventEmitter<Message[]>();
+  private _messages: Message[];
 
-  constructor() { 
+  constructor() { }
+
+  @Input() set messages(messages: Message[]) {
+    this._messages = Array.isArray(messages) ? messages : [];
+    this.messagesChange.emit(this._messages);
+  }
+
+  get messages() {
+    return this._messages;
   }
 
   ngOnInit() {
-    this.messages.push(new ImageMessage('text', undefined, '/assets/images/especializa_logo.jpg'))
+    
   }
 
   isImageMessage(m: Message){

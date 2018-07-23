@@ -1,18 +1,18 @@
 <section class="MessagesArea">
   <ul id="messages" class="List">
-    <li class="List__Item">
+    <li class="List__Item" *ngFor="let message of messages; let i" [class.image-message]="isImageMessage(message)">
       <!--
-      a Tag ng-template é util para encapsular varias marcações HTML dentor daquela mesma
-      condição. Assim não é necessário ficar adcionando o *ngIf em cada tag.
-      <ng-template [ngIf]="isImageMessage(messages[0])">
-        <img [src]="messages[0].url" [alt]="messages[0].text" [title]="messages[0].text">
-      </ng-template>
-       -->
-      <img *ngIf="isImageMessage(messages[0]) else messageText" [src]="messages[0].url" [alt]="messages[0].text" [title]="messages[0].text">
+          a Tag ng-template é util para encapsular varias marcações HTML dentor daquela mesma
+          condição. Assim não é necessário ficar adcionando o *ngIf em cada tag.
+          <ng-template [ngIf]="isImageMessage(messages[0])">
+            <img [src]="messages[0].url" [alt]="messages[0].text" [title]="messages[0].text">
+          </ng-template>
+            -->
+      <img *ngIf="isImageMessage(message) else messageText" [src]="message.url" [alt]="message.text" [title]="message.text">
       <ng-template #messageText>
-        <div class="List__Item__Text">{{ messages[0].text }}</div>
+        <div class="List__Item__Text">{{ message.text }}</div>
       </ng-template>
-      <div class="List__Item__Created">{{ messages[0].created }}</div>
+      <div class="List__Item__Created">{{ message.created }}</div>
     </li>
   </ul>
 </section>
