@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Message } from 'app/core';
+import { Message, MessagesService } from 'app/core';
 
 @Component({
   selector: 'app-new-messages',
@@ -8,16 +8,18 @@ import { Message } from 'app/core';
 })
 export class NewMessagesComponent implements OnInit {
 
-  public messages: Message[];
+  public messages: Message[] = [];
 
-  constructor() { }
+  constructor(private messageServices: MessagesService) { }
 
   ngOnInit() {
   }
 
   onNewMessage(txt:string){
-    const m = new Message(txt);
-    this.messages.push(m);
+    console.log('onNewMessage', txt);    
+    this.messageServices.addMessage(txt).then((m: Message[]) => {
+      this.messages = m;
+    });
     console.dir(this.messages)
   }
 

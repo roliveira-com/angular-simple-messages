@@ -10,6 +10,12 @@
             -->
       <img *ngIf="isImageMessage(message) else messageText" [src]="message.url" [alt]="message.text" [title]="message.text">
       <ng-template #messageText>
+        <ng-container [ngSwitch]="message.text">
+          <span *ngSwitchCase="'Hey'">- Ae mano, de boas?</span>
+          <span *ngSwitchCase="'Bom dia'">- Fala jow, sussa?</span>
+          <span *ngSwitchCase="'Vai tomar no cu'">- Não gostei desta abordagem!</span>
+          <span *ngSwitchDefault></span>
+        </ng-container>
         <div class="List__Item__Text">{{ message.text }}</div>
       </ng-template>
       <div class="List__Item__Created">{{ message.created }}</div>

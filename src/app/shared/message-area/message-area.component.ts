@@ -9,14 +9,12 @@ import { Message, ImageMessage } from 'app/core'
 })
 export class MessageAreaComponent implements OnInit {
 
-  @Output() messagesChange = new EventEmitter<Message[]>();
   private _messages: Message[];
 
   constructor() { }
 
   @Input() set messages(messages: Message[]) {
     this._messages = Array.isArray(messages) ? messages : [];
-    this.messagesChange.emit(this._messages);
   }
 
   get messages() {

@@ -8,7 +8,7 @@ import { Message } from 'app/core'
 })
 export class MessageBoxComponent implements OnInit {
 
-  public text: string = 'Digite sua mensagem';
+  public text: string = '';
   @Output() public onNewMessage = new EventEmitter<string>();
 
 
