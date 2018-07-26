@@ -5,12 +5,14 @@ import { NewMessagesComponent } from './new-messages.component';
 import { MessageBoxComponent } from './message-box/message-box.component';
 
 import { SharedModule } from '../shared/shared.module'
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   exports: [
     NewMessagesComponent,
