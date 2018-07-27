@@ -13,6 +13,7 @@ export class NewMessagesComponent implements OnInit {
   constructor(private messageServices: MessagesService) { }
 
   ngOnInit() {
+    this.messages = this.messageServices.loadMessages();
   }
 
   onNewMessage(txt:string){

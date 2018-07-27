@@ -1,6 +1,6 @@
 <section class="MessagesArea">
   <ul id="messages" class="List">
-    <li class="List__Item" *ngFor="let message of messages; let i" [class.image-message]="isImageMessage(message)">
+    <li class="List__Item" *ngFor="let message of messages; let i = index" [routerLink]="['/edit', i]" [class.image-message]="isImageMessage(message)">
       <!--
           a Tag ng-template é util para encapsular varias marcações HTML dentor daquela mesma
           condição. Assim não é necessário ficar adcionando o *ngIf em cada tag.
