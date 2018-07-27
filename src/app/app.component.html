@@ -1,2 +1,9 @@
-<header><img id="logo" [src]="logoPath" alt=""></header>
+<header>
+  <!-- <button class="btn" routerLink="old-messages" routerLinkActive="active">Old Messages</button>
+  <button class="btn" routerLink="new-messages" routerLinkActive="active">New Messages</button> -->
+
+  <button class="btn" routerLink="old-messages" routerLinkActive #oml="routerLinkActive">Old Messages {{ oml.isActive ? '*' : '' }}</button>
+  <button class="btn" routerLink="new-messages" routerLinkActive #nml="routerLinkActive">New Messages {{ nml.isActive ? '*' : '' }}</button>
+  <img id="logo" [src]="logoPath" alt="">
+</header>
 <router-outlet></router-outlet>

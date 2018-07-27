@@ -5,7 +5,7 @@ import { NewMessagesComponent } from './new-messages/new-messages.component'
 import { OldMessagesComponent } from './old-messages/old-messages.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'new-messages', pathMatch: 'full' },
+  { path: '', redirectTo: '/new-messages', pathMatch: 'full' },
   { path: 'new-messages', component: NewMessagesComponent },
   { path: 'old-messages', component: OldMessagesComponent },
   { path: '**', component: NewMessagesComponent, pathMatch: 'full' }

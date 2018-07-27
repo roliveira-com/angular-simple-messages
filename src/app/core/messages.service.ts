@@ -27,11 +27,20 @@ export class MessagesService {
     return Promise.resolve(new Message(text));
   }
 
-  addMessage(text): Promise<Message[]>{
+  public addMessage(text): Promise<Message[]>{
     return this.messageFactory(text).then((m: Message) => {
       this.messages = [...this.messages, m];
+      localStorage.setItem('messages',JSON.stringify(this.messages));
       return this.messages;
     })
+  }
+
+  public loadMessages(){
+    const item = localStorage.getItem('messages');
+    if(item){
+      this.messages = JSON.parse(item);
+    }
+    return this.messages;
   }
 
 }
